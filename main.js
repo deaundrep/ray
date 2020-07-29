@@ -34,19 +34,25 @@ const newRay = {
         return  - 1
     },
 
-    shift : function(value){
-        const shifts = this.length
-        const lastIndex = this.length - 1; 
-        delete this[lastIndex];
-        this[this.length]
-        this.length--
+    shift : function(){
+        const shifts = this[0];
+
+        for(let i = 0; i < this.length; i++){
+            this[i] = this[i + 1];
+        }
+        delete this[this.length -1];
+        this.length--;
         return shifts;
 
     },
 
     unshift: function(value){
-        this[this.length] = value;
-        this.length ++;
+        for(let i = this.length; i >=1; i--){
+            this[i] = this[i - 1];
+        }
+        this[0] = value
+
+        return this.length++
     },
 }
 return newRay
